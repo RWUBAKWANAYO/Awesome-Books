@@ -1,9 +1,10 @@
 let booksList = [];
 
 const books = document.querySelector('.books');
+
+// function to get books from localStorage
 const getBooks = () => {
   const storageData = localStorage.getItem('books');
-  // console.log(storageData);
   if (storageData === undefined || storageData === null) {
     return;
   }
@@ -17,15 +18,15 @@ const getBooks = () => {
               </div>`).join('');
 };
 
+// functioon to remove book from bokks collections
 const removeBook = (id) => {
   if (id === null) return;
   const newBooks = booksList.filter((book) => book.id !== id);
   localStorage.setItem('books', JSON.stringify(newBooks));
   getBooks();
 };
-removeBook(null);
 
-window.addEventListener('load', getBooks);
+// function to add book from books collection
 const booksForm = document.querySelector('.new-book-form');
 booksForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -35,5 +36,12 @@ booksForm.addEventListener('submit', (event) => {
   const newBook = { id, title, author };
   booksList = [...booksList, newBook];
   localStorage.setItem('books', JSON.stringify(booksList));
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
   getBooks();
+});
+
+window.addEventListener('load', () => {
+  getBooks();
+  removeBook(null);
 });
