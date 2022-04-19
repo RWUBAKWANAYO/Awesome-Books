@@ -13,15 +13,13 @@
     <section class="main-container">
         <div class="books-container container">
             <h1 class="header-title">All Awesome Books</h1>
-            <table id="table">
-                <tbody class="books"></tbody>
-            </table>
+            <div class='books'></div>
         </div>
         <div class="new-book-container container">
             <form class="new-book-form">
                 <h3>Add a new book</h3>
-                <input type="text" name="title" placeholder="Title" id="title" required />
-                <input type="text" name="author" placeholder="Author" id="author" required />
+                <input type="text" name="title" placeholder="Title" id="title" pattern="[A-Za-z_]{1,15}" required />
+                <input type="text" name="author" placeholder="Author" id="author" pattern="[A-Za-z_]{1,15}" required />
                 <input type="submit" value="Add" id="add-book" />
             </form>
         </div>
