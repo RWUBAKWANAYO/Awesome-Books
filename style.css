@@ -1,68 +1,71 @@
 * {
-    font-family: monospace;
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
 }
 
 .header-title {
-    font-size: 35px;
-    text-align: center;
+  font-size: 35px;
+  text-align: center;
 }
 
 .main-container {
-    width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin: auto;
+  width: 60%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 50px auto 0 auto;
 }
 
 .new-book-form {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    width: 50%;
-    margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  width: 50%;
+  margin: 20px auto;
 }
 
 .container {
-    width: 100%;
-}
-
-#table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid #000;
+  width: 100%;
 }
 
 .books {
-    width: 100%;
+  width: 100%;
+  margin: 40px auto 0 auto;
+  border: 2px solid #000;
 }
 
-.button-container {
-    text-align: end;
+
+/* .button-container>button */
+
+button {
+  float: right;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 2px #000;
+  padding: 2px;
+  margin: 0 10px 0 0;
 }
 
-.button-container>button {
-    height: 20px;
-    border: 2px solid #000;
-    box-shadow: 2px 2px 2px #000;
-    margin: 2px 15px 2px 0;
+.row {
+  height: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px 5px 2px 5px;
 }
 
-.tr-bg {
-    background-color: #c4c4c4;
-}
-
-td {
-    padding: 0 0 0 10px;
+.row-bg {
+  background-color: #c4c4c4;
 }
 
 #add-book {
-    width: fit-content;
-    margin-left: auto;
-    border: 2px solid #000;
-    box-shadow: 2px 2px 2px #000;
+  width: fit-content;
+  padding: 2px 5px;
+  margin-left: auto;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 2px #000;
 }
 
 input {
-    border: 2px solid #000;
+  padding: 2px;
+  border: 2px solid #000;
 }
