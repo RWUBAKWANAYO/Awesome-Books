@@ -1,4 +1,12 @@
-let booksList = [];
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
+}
+
+let booksList = JSON.parse(localStorage.getItem('book')) || [];
 
 const books = document.querySelector('.books');
 
@@ -10,12 +18,16 @@ const getBooks = () => {
   }
   const storageBooks = JSON.parse(storageData);
   booksList = storageBooks;
-  books.innerHTML = storageBooks.map((book) => `<div>
-                  <h4>${book.title}</h4>
-                  <h4>${book.author}</h4>
-                  <button type="button" onclick='removeBook(${book.id})' >Remove</button>
-                  <hr />
-              </div>`).join('');
+  books.innerHTML = storageBooks
+    .map(
+      (book, index) => `<div class=" row ${index % 2 === 0 ? 'row-bg' : ''}">
+                    <div>
+                      "${book.title}" by ${book.author}
+                      <button type="button" onclick='removeBook(${book.id})'>Remove</button>
+                    </div>
+                </div>`,
+    )
+    .join('');
 };
 
 // functioon to remove book from bokks collections
@@ -32,10 +44,10 @@ booksForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-  const id = Math.floor(Math.random() * 1000);
-  const newBook = { id, title, author };
-  booksList = [...booksList, newBook];
-  localStorage.setItem('books', JSON.stringify(booksList));
+  const id = Math.floor(Math.random() * 10000); // Asign random Id for each
+  const item = new Book(id, title, author); // Add book for the class Book
+  booksList = [...booksList, item];
+  localStorage.setItem('books', JSON.stringify(booksList)); // Add the new bookList to the local storage
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   getBooks();

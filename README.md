@@ -28,7 +28,9 @@ Learn more about [Live Server](https://marketplace.visualstudio.com/items?itemNa
 - GitHub: [@githubrwubakwanayo](https://github.com/RWUBAKWANAYO)
 - LinkedIn: [Rwubakwanayo](https://www.linkedin.com/in/rwubakwanayo-olivier)
 ## :handshake: Contributing
-### - Ibrahim Ahmat
+- GitHub: [@ibr5500](https://github.com/ibr5500)
+- LinkedIn: [Ibrahim Ahmat](https://www.linkedin.com/in/ibrahim-ahmat-b5513b1a6/)
+
 Contributions, issues, and feature requests are welcome!
 Feel free to check the [issues page](../../issues/).
 ## Show your support
