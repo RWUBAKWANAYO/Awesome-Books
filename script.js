@@ -19,14 +19,11 @@ const getBooks = () => {
   const storageBooks = JSON.parse(storageData);
   booksList = storageBooks;
   books.innerHTML = storageBooks
-    .map(
-      (book, index) => `<div class=" row ${index % 2 === 0 ? 'row-bg' : ''}">
-                    <div>
-                      "${book.title}" by ${book.author}
-                      <button type="button" onclick='removeBook(${book.id})'>Remove</button>
-                    </div>
-                </div>`,
-    )
+    .map((book, index) => `
+    <div class=" row ${index % 2 === 0 ? 'row-bg' : ''}">
+                    <span>"${book.title}"by ${book.author}</span>
+                    <button type="button" onclick='removeBook(${book.id})'>Remove</button>
+                </div>`)
     .join('');
 };
 
@@ -53,9 +50,25 @@ booksForm.addEventListener('submit', (event) => {
   getBooks();
 });
 
-window.addEventListener('load', () => {
-  getBooks();
-  removeBook(null);
+// handle menu
+
+const nav = document.querySelector('.navigation');
+const listGroup = document.querySelector('.right');
+const openMenu = document.querySelector('#menuBarIcon');
+const closeMenu = document.querySelector('#closeMenuIcon');
+
+const handleClose = () => {
+  nav.style.transform = '';
+  listGroup.style.transform = '';
+};
+
+openMenu.addEventListener('click', () => {
+  nav.style.transform = 'translateX(0%)';
+  listGroup.style.transform = 'translateX(0%)';
+});
+
+closeMenu.addEventListener('click', () => {
+  handleClose();
 });
 
 // navigation
@@ -64,15 +77,12 @@ const add = document.querySelector('#add');
 const contact = document.querySelector('#contact');
 
 // sections
+const navLinks = document.querySelectorAll('.right-list');
 const listSection = document.querySelector('#books-list');
 const addBookSection = document.querySelector('#add-new');
 const contactSection = document.querySelector('#contact-us');
 
-window.addEventListener('load', () => {
-  listSection.classList.remove('display');
-  addBookSection.classList.add('display');
-  contactSection.classList.add('display');
-});
+navLinks.forEach((listEl) => listEl.addEventListener('click', handleClose));
 
 list.addEventListener('click', () => {
   listSection.classList.remove('display');
@@ -90,6 +100,11 @@ contact.addEventListener('click', () => {
   addBookSection.classList.add('display');
   contactSection.classList.remove('display');
 });
+const defaultDisplay = () => {
+  listSection.classList.remove('display');
+  addBookSection.classList.add('display');
+  contactSection.classList.add('display');
+};
 
 // handle dates actions
 
@@ -112,4 +127,10 @@ const handleTime = () => {
     : `${month} ${currentDate} ${year}, ${hour} ${minutes} ${second} PM`;
   dateContainer.innerHTML = time;
 };
-window.addEventListener('load', handleTime);
+
+window.addEventListener('load', () => {
+  getBooks();
+  handleTime();
+  removeBook(null);
+  defaultDisplay();
+});
