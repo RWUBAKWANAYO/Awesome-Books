@@ -6,7 +6,7 @@ class Book {
   }
 }
 
-let booksList = JSON.parse(localStorage.getItem('book'));
+let booksList = JSON.parse(localStorage.getItem('book')) || [];
 
 const books = document.querySelector('.books');
 
