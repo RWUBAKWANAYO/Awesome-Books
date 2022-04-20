@@ -10,21 +10,47 @@
 </head>
 
 <body>
-    <section class="main-container">
-        <div class="books-container container">
+    <header>
+        <h1>Awesome Books</h1>
+        <ul class="right">
+            <li><a id="list">List</a></li>
+            <li><a id="add">Add new</a></li>
+            <li><a id="contact">Contact</a></li>
+        </ul>
+    </header>
+    <section id="books-list" class="container diplay">
+        <div class="books-container">
             <h1 class="header-title">All Awesome Books</h1>
             <div class="books"></div>
         </div>
-        <div class="new-book-container container">
+    </section>
+    <section id="add-new" class='container diplay'>
+        <div class="new-book-container">
+            <h2 class="form-title">Add a new book</h2>
             <form class="new-book-form">
-                <h3>Add a new book</h3>
-                <input type="text" name="title" placeholder="Title" id="title" pattern="[a-zA-Z]{1,15}" required />
-                <input type="text" name="author" placeholder="Author" id="author" pattern="[a-zA-Z]{1,15}" required />
+                <input type="text" name="title" placeholder="Title" id="title" pattern="[a-zA-Z ]{1,15}" required />
+                <input type="text" name="author" placeholder="Author" id="author" pattern="[a-zA-Z ]{1,15}" required />
                 <input type="submit" value="Add" id="add-book" />
             </form>
         </div>
     </section>
-
+    <section id="contact-us" class="container">
+        <div class="contact-items">
+            <h2 class="contact-title">Contact information</h2>
+            Do you have any questions or you just want to say "Hello"?
+            <br/> You can reach out to us!
+            <div class="contact-info">
+                <ul>
+                    <li>Our e-mail: mail@mail.com</li>
+                    <li>Our phone number: 0123456789</li>
+                    <li>Our address: Streetname 22, 84503 City, Country</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer class="foot">
+        <h3 class="foot-title">Copyright ...</h3>
+    </footer>
     <script src="./script.js"></script>
 </body>
 
