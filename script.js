@@ -19,14 +19,11 @@ const getBooks = () => {
   const storageBooks = JSON.parse(storageData);
   booksList = storageBooks;
   books.innerHTML = storageBooks
-    .map(
-      (book, index) => `<div class=" row ${index % 2 === 0 ? 'row-bg' : ''}">
-                    <div>
-                      "${book.title}" by ${book.author}
-                      <button type="button" onclick='removeBook(${book.id})'>Remove</button>
-                    </div>
-                </div>`,
-    )
+    .map((book, index) => `
+    <div class=" row ${index % 2 === 0 ? 'row-bg' : ''}">
+                    <span>"${book.title}"by ${book.author}</span>
+                    <button type="button" onclick='removeBook(${book.id})'>Remove</button>
+                </div>`)
     .join('');
 };
 
@@ -39,6 +36,7 @@ const removeBook = (id) => {
 };
 
 // function to add book from books collection
+const bookAdded = document.querySelector('.success');
 const booksForm = document.querySelector('.new-book-form');
 booksForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -48,12 +46,96 @@ booksForm.addEventListener('submit', (event) => {
   const item = new Book(id, title, author); // Add book for the class Book
   booksList = [...booksList, item];
   localStorage.setItem('books', JSON.stringify(booksList)); // Add the new bookList to the local storage
+  bookAdded.style = 'display: block';
+  setTimeout(() => {
+    bookAdded.style = 'display: none';
+  }, 2000);
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   getBooks();
 });
 
+// handle menu
+
+const nav = document.querySelector('.navigation');
+const listGroup = document.querySelector('.right');
+const openMenu = document.querySelector('#menuBarIcon');
+const closeMenu = document.querySelector('#closeMenuIcon');
+
+const handleClose = () => {
+  nav.style.transform = '';
+  listGroup.style.transform = '';
+};
+
+openMenu.addEventListener('click', () => {
+  nav.style.transform = 'translateX(0%)';
+  listGroup.style.transform = 'translateX(0%)';
+});
+
+closeMenu.addEventListener('click', () => {
+  handleClose();
+});
+
+// navigation
+const list = document.querySelector('#list');
+const add = document.querySelector('#add');
+const contact = document.querySelector('#contact');
+
+// sections
+const navLinks = document.querySelectorAll('.right-list');
+const listSection = document.querySelector('#books-list');
+const addBookSection = document.querySelector('#add-new');
+const contactSection = document.querySelector('#contact-us');
+
+navLinks.forEach((listEl) => listEl.addEventListener('click', handleClose));
+
+list.addEventListener('click', () => {
+  listSection.classList.remove('display');
+  addBookSection.classList.add('display');
+  contactSection.classList.add('display');
+});
+add.addEventListener('click', () => {
+  listSection.classList.add('display');
+  addBookSection.classList.remove('display');
+  contactSection.classList.add('display');
+});
+
+contact.addEventListener('click', () => {
+  listSection.classList.add('display');
+  addBookSection.classList.add('display');
+  contactSection.classList.remove('display');
+});
+const defaultDisplay = () => {
+  listSection.classList.remove('display');
+  addBookSection.classList.add('display');
+  contactSection.classList.add('display');
+};
+
+// handle dates actions
+
+const handleTime = () => {
+  const dateContainer = document.querySelector('.date-container');
+  const dateFunc = new Date();
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const year = dateFunc.getFullYear();
+  const month = months[dateFunc.getMonth()];
+  let currentDate = dateFunc.getDate();
+  const hour = dateFunc.getHours();
+  const minutes = dateFunc.getMinutes();
+  const second = dateFunc.getSeconds();
+  if (currentDate === 1) currentDate = 'first';
+  else if (currentDate === 2) currentDate = 'second';
+  else if (currentDate === 3) currentDate = 'third';
+  else currentDate += 'th';
+
+  const time = (hour < 12) ? `${month} ${currentDate} ${year}, ${hour} ${minutes} ${second} AM`
+    : `${month} ${currentDate} ${year}, ${hour} ${minutes} ${second} PM`;
+  dateContainer.innerHTML = time;
+};
+
 window.addEventListener('load', () => {
   getBooks();
+  handleTime();
   removeBook(null);
+  defaultDisplay();
 });
