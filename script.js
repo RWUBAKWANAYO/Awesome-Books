@@ -36,6 +36,7 @@ const removeBook = (id) => {
 };
 
 // function to add book from books collection
+const bookAdded = document.querySelector('.success');
 const booksForm = document.querySelector('.new-book-form');
 booksForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -45,6 +46,10 @@ booksForm.addEventListener('submit', (event) => {
   const item = new Book(id, title, author); // Add book for the class Book
   booksList = [...booksList, item];
   localStorage.setItem('books', JSON.stringify(booksList)); // Add the new bookList to the local storage
+  bookAdded.style = 'display: block';
+  setTimeout(() => {
+    bookAdded.style = 'display: none';
+  }, 2000);
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   getBooks();

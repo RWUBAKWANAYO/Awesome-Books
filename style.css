@@ -172,6 +172,19 @@ input {
   justify-content: flex-end;
 }
 
+.success {
+  display: none;
+  width: fit-content;
+  margin: auto;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #007400;
+  background-color: #a2e1a2;
+  border: 2px solid #007400;
+}
+
 @media (max-width: 768px) {
   .navigation {
     position: fixed;

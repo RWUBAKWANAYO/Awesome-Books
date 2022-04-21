@@ -14,16 +14,16 @@
     <header>
         <h1>Awesome Books</h1>
         <nav class="navigation">
-          <ul class="right">
-           <li class="right-list" id="closeMenu"><i class="fa-solid fa-xmark" id="closeMenuIcon"></i></li>
-            <li class="right-list"><a id="list">List</a></li>
-            <li class="right-list"><a id="add">Add new</a></li>
-            <li class="right-list"><a id="contact">Contact</a></li>
+            <ul class="right">
+                <li class="right-list" id="closeMenu"><i class="fa-solid fa-xmark" id="closeMenuIcon"></i></li>
+                <li class="right-list"><a id="list">List</a></li>
+                <li class="right-list"><a id="add">Add new</a></li>
+                <li class="right-list"><a id="contact">Contact</a></li>
 
-        </ul>
+            </ul>
 
         </nav>
-         <div id="menuBar"><i class="fa-solid fa-bars" id="menuBarIcon"></i></div>
+        <div id="menuBar"><i class="fa-solid fa-bars" id="menuBarIcon"></i></div>
     </header>
     <div class="date-section"><span class="date-container"></span></div>
     <section id="books-list" class="container">
@@ -38,6 +38,7 @@
             <form class="new-book-form">
                 <input type="text" name="title" placeholder="Title" id="title" pattern="[a-zA-Z ]{1,15}" required />
                 <input type="text" name="author" placeholder="Author" id="author" pattern="[a-zA-Z ]{1,15}" required />
+                <span class="success">Book added</span>
                 <input type="submit" value="Add" id="add-book" />
             </form>
         </div>
